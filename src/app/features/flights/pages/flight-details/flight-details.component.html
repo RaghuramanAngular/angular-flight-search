@@ -1,0 +1,160 @@
+<section class="details-container">
+
+  <a
+    routerLink="/flights"
+    class="back-link">
+    ← Back to flight search
+  </a>
+
+  @if (loading) {
+
+    <div class="status-card">
+      Loading flight details...
+    </div>
+
+  } @else if (errorMessage) {
+
+    <div class="status-card error">
+      {{ errorMessage }}
+    </div>
+
+  } @else if (flight) {
+
+    <div class="details-card">
+
+      <div class="details-header">
+
+        <div>
+          <p class="label">Airline</p>
+
+          <h1>{{ flight.airline }}</h1>
+
+          <span class="flight-number">
+            {{ flight.flightNumber }}
+          </span>
+        </div>
+
+        <div class="price">
+          <span>From</span>
+
+          <strong>
+            ₹{{ flight.price }}
+          </strong>
+
+          <small>per passenger</small>
+        </div>
+
+      </div>
+
+      <div class="route">
+
+        <div class="airport">
+          <strong>
+            {{ flight.fromCode }}
+          </strong>
+
+          <span>
+            {{ flight.from }}
+          </span>
+
+          <time>
+            {{
+              flight.departureTime
+                | date:'shortTime'
+            }}
+          </time>
+        </div>
+
+        <div class="journey">
+
+          <span>{{ flight.duration }}</span>
+
+          <div class="line">
+            ─────────────→
+          </div>
+
+          <span>
+            @if (flight.stops === 0) {
+              Non-stop
+            } @else {
+              {{ flight.stops }}
+              {{
+                flight.stops === 1
+                  ? 'stop'
+                  : 'stops'
+              }}
+            }
+          </span>
+
+        </div>
+
+        <div class="airport">
+          <strong>
+            {{ flight.toCode }}
+          </strong>
+
+          <span>
+            {{ flight.to }}
+          </span>
+
+          <time>
+            {{
+              flight.arrivalTime
+                | date:'shortTime'
+            }}
+          </time>
+        </div>
+
+      </div>
+
+      <div class="information-grid">
+
+        <div class="information">
+          <span>Departure</span>
+
+          <strong>
+            {{
+              flight.departureTime
+                | date:'medium'
+            }}
+          </strong>
+        </div>
+
+        <div class="information">
+          <span>Arrival</span>
+
+          <strong>
+            {{
+              flight.arrivalTime
+                | date:'medium'
+            }}
+          </strong>
+        </div>
+
+        <div class="information">
+          <span>Duration</span>
+
+          <strong>
+            {{ flight.duration }}
+          </strong>
+        </div>
+
+        <div class="information">
+          <span>Stops</span>
+
+          <strong>
+            {{
+              flight.stops === 0
+                ? 'Non-stop'
+                : flight.stops
+            }}
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+</section>

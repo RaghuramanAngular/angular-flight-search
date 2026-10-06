@@ -53,9 +53,11 @@
 
     <span>per passenger</span>
 
-    <button type="button">
-      View Details
-    </button>
+<a
+  class="details-button"
+  [routerLink]="['/flights', flight.id]">
+  View Details
+</a>
   </div>
 
 </article>

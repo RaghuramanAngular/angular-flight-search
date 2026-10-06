@@ -1,0 +1,188 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f8fafc;
+}
+
+.details-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+
+  color: #334155;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.details-card,
+.status-card {
+  padding: 32px;
+
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e2e8f0;
+
+  h1 {
+    margin: 4px 0;
+  }
+}
+
+.label,
+.flight-number {
+  color: #64748b;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  strong {
+    margin: 4px 0;
+    font-size: 28px;
+  }
+
+  span,
+  small {
+    color: #64748b;
+  }
+}
+
+.route {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.airport {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  strong {
+    font-size: 30px;
+  }
+
+  span {
+    color: #64748b;
+  }
+
+  time {
+    font-weight: 600;
+  }
+
+  &:last-child {
+    text-align: right;
+  }
+}
+
+.journey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #64748b;
+  font-size: 14px;
+}
+
+.line {
+  width: 100%;
+  text-align: center;
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+  padding: 18px;
+
+  background: #f8fafc;
+  border-radius: 10px;
+
+  span {
+    color: #64748b;
+    font-size: 14px;
+  }
+}
+
+.status-card {
+  text-align: center;
+}
+
+.error {
+  color: #b91c1c;
+}
+
+@media (max-width: 700px) {
+
+  :host {
+    padding: 20px 16px;
+  }
+
+  .details-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .price {
+    align-items: flex-start;
+  }
+
+  .route {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .airport:last-child {
+    text-align: left;
+  }
+
+  .journey {
+    align-items: flex-start;
+  }
+
+  .information-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .information-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
