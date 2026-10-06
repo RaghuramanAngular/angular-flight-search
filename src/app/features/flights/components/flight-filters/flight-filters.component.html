@@ -1,0 +1,87 @@
+<section class="filters">
+
+  <div class="filter-header">
+    <div>
+      <h3>Filter Flights</h3>
+      <p>Refine your search results</p>
+    </div>
+
+    <button
+      type="button"
+      class="reset-button"
+      (click)="resetFilters()">
+      Reset
+    </button>
+  </div>
+
+  <form
+    class="filter-form"
+    [formGroup]="filterForm">
+
+    <div class="filter-field">
+      <label for="airline">Airline</label>
+
+      <select
+        id="airline"
+        formControlName="airline">
+
+        <option value="ALL">
+          All Airlines
+        </option>
+
+        <option value="IndiGo">
+          IndiGo
+        </option>
+
+        <option value="Air India">
+          Air India
+        </option>
+
+        <option value="Air India Express">
+          Air India Express
+        </option>
+
+      </select>
+    </div>
+
+    <div class="filter-field">
+      <label for="stops">Stops</label>
+
+      <select
+        id="stops"
+        formControlName="stops">
+
+        <option value="ALL">
+          All Stops
+        </option>
+
+        <option value="0">
+          Non-stop
+        </option>
+
+        <option value="1">
+          1 Stop
+        </option>
+
+      </select>
+    </div>
+
+    <div class="filter-field">
+      <label for="maxPrice">
+        Maximum price:
+        ₹{{ filterForm.controls.maxPrice.value }}
+      </label>
+
+      <input
+        id="maxPrice"
+        type="range"
+        min="3000"
+        max="20000"
+        step="500"
+        formControlName="maxPrice"
+      />
+    </div>
+
+  </form>
+
+</section>

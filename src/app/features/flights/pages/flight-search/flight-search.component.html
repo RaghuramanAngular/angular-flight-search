@@ -16,36 +16,58 @@
     </div>
   }
 
-  @if (!loading && !errorMessage && flights.length > 0) {
-
-    <div class="results-header">
-      <h2>Available Flights</h2>
-
-      <span>
-        {{ flights.length }}
-        {{ flights.length === 1 ? 'flight' : 'flights' }} found
-      </span>
-    </div>
-
-    @for (flight of flights; track flight.id) {
-
-      <app-flight-card
-        [flight]="flight">
-    </app-flight-card>
-
-    }
-
-  }
-
   @if (
     hasSearched &&
     !loading &&
-    !errorMessage &&
-    flights.length === 0
+    !errorMessage
   ) {
-    <div class="status-message">
-      No flights found for the selected route.
-    </div>
+
+    <app-flight-filters
+      (filtersChanged)="onFiltersChanged($event)">
+    </app-flight-filters>
+
+    @if (filteredFlights$ | async; as flights) {
+
+      @if (flights.length > 0) {
+
+        <div class="results-header">
+
+          <h2>Available Flights</h2>
+
+          <span>
+            {{ flights.length }}
+            {{
+              flights.length === 1
+                ? 'flight'
+                : 'flights'
+            }}
+            found
+          </span>
+
+        </div>
+
+        @for (
+          flight of flights;
+          track flight.id
+        ) {
+
+          <app-flight-card
+            [flight]="flight">
+          </app-flight-card>
+
+        }
+
+      } @else {
+
+        <div class="status-message">
+          No flights match your search
+          or selected filters.
+        </div>
+
+      }
+
+    }
+
   }
 
 </section>
