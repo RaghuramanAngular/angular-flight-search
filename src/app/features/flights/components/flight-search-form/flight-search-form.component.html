@@ -1,0 +1,143 @@
+<section class="search-container">
+
+  <div class="search-header">
+    <h1>Find your flight</h1>
+    <p>Search and compare available flights</p>
+  </div>
+
+  <form
+    class="search-form"
+    [formGroup]="searchForm"
+    (ngSubmit)="onSubmit()"
+  >
+
+    <div class="form-field">
+      <label for="from">From</label>
+
+      <select id="from" formControlName="from">
+        <option value="">Select origin</option>
+        <option value="MAA">Chennai (MAA)</option>
+        <option value="BLR">Bengaluru (BLR)</option>
+        <option value="HYD">Hyderabad (HYD)</option>
+        <option value="DEL">Delhi (DEL)</option>
+      </select>
+
+      @if (
+        searchForm.controls.from.touched &&
+        searchForm.controls.from.hasError('required')
+      ) {
+        <small class="error">
+          Origin is required.
+        </small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="to">To</label>
+
+      <select id="to" formControlName="to">
+        <option value="">Select destination</option>
+        <option value="MAA">Chennai (MAA)</option>
+        <option value="BLR">Bengaluru (BLR)</option>
+        <option value="HYD">Hyderabad (HYD)</option>
+        <option value="DEL">Delhi (DEL)</option>
+      </select>
+
+      @if (
+        searchForm.controls.to.touched &&
+        searchForm.controls.to.hasError('required')
+      ) {
+        <small class="error">
+          Destination is required.
+        </small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="departureDate">Departure date</label>
+
+      <input
+        id="departureDate"
+        type="date"
+        formControlName="departureDate"
+      />
+
+      @if (
+        searchForm.controls.departureDate.touched &&
+        searchForm.controls.departureDate.hasError('required')
+      ) {
+        <small class="error">
+          Departure date is required.
+        </small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="returnDate">Return date</label>
+
+      <input
+        id="returnDate"
+        type="date"
+        formControlName="returnDate"
+      />
+
+      @if (
+        searchForm.controls.returnDate.touched &&
+        searchForm.controls.returnDate.hasError('required')
+      ) {
+        <small class="error">
+          Return date is required.
+        </small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="passengers">Passengers</label>
+
+      <input
+        id="passengers"
+        type="number"
+        min="1"
+        max="9"
+        formControlName="passengers"
+      />
+
+      @if (
+        searchForm.controls.passengers.touched &&
+        searchForm.controls.passengers.invalid
+      ) {
+        <small class="error">
+          Passengers must be between 1 and 9.
+        </small>
+      }
+    </div>
+
+    <div class="validation-errors">
+
+      @if (
+        searchForm.touched &&
+        searchForm.hasError('sameAirport')
+      ) {
+        <small class="error">
+          Origin and destination cannot be the same.
+        </small>
+      }
+
+      @if (
+        searchForm.touched &&
+        searchForm.hasError('invalidReturnDate')
+      ) {
+        <small class="error">
+          Return date cannot be before departure date.
+        </small>
+      }
+
+    </div>
+
+    <button type="submit" class="search-button">
+      Search Flights
+    </button>
+
+  </form>
+
+</section>
