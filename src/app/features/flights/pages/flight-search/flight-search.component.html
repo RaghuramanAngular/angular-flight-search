@@ -29,50 +29,9 @@
 
     @for (flight of flights; track flight.id) {
 
-      <article class="flight-card">
-
-        <div class="airline">
-          <strong>{{ flight.airline }}</strong>
-          <span>{{ flight.flightNumber }}</span>
-        </div>
-
-        <div class="route">
-
-          <div>
-            <strong>{{ flight.fromCode }}</strong>
-            <span>
-              {{ flight.departureTime | date:'shortTime' }}
-            </span>
-          </div>
-
-          <div class="duration">
-            <span>{{ flight.duration }}</span>
-            <span>────────→</span>
-            <span>
-              {{ flight.stops === 0
-                ? 'Non-stop'
-                : flight.stops + ' stop(s)' }}
-            </span>
-          </div>
-
-          <div>
-            <strong>{{ flight.toCode }}</strong>
-            <span>
-              {{ flight.arrivalTime | date:'shortTime' }}
-            </span>
-          </div>
-
-        </div>
-
-        <div class="price">
-          <strong>
-            ₹{{ flight.price }}
-          </strong>
-
-          <span>per passenger</span>
-        </div>
-
-      </article>
+      <app-flight-card
+        [flight]="flight">
+    </app-flight-card>
 
     }
 

@@ -5,11 +5,11 @@ import { Flight } from '../../../../core/models/flight';
 import { FlightSearch } from '../../../../core/models/flight-search';
 import { FlightService } from '../../../../core/services/flight.service';
 import { FlightSearchFormComponent } from '../../components/flight-search-form/flight-search-form.component';
-import { DatePipe } from '@angular/common';
+import { FlightCardComponent } from '../../components/flight-card/flight-card.component';
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [FlightSearchFormComponent, DatePipe],
+  imports: [FlightSearchFormComponent, FlightCardComponent],
   templateUrl: './flight-search.component.html',
   styleUrl: './flight-search.component.scss'
 })
